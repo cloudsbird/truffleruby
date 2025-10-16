@@ -1,4 +1,4 @@
-FROM buildpack-deps:stable
+FROM buildpack-deps:stable-slim
 
 ENV LANG C.UTF-8
 
