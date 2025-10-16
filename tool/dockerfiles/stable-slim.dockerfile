@@ -3,10 +3,11 @@ FROM debian:stable-slim
 ENV LANG C.UTF-8
 
 ARG TRUFFLERUBY_VERSION
+ARG ARCH=amd64
 
 RUN set -eux ;\
-    wget -q https://github.com/oracle/truffleruby/releases/download/vm-$TRUFFLERUBY_VERSION/truffleruby-$TRUFFLERUBY_VERSION-linux-amd64.tar.gz ;    tar -xzf truffleruby-$TRUFFLERUBY_VERSION-linux-amd64.tar.gz -C /usr/local --strip-components=1 ;\
-    rm truffleruby-$TRUFFLERUBY_VERSION-linux-amd64.tar.gz ;\
+    wget -q https://github.com/oracle/truffleruby/releases/download/vm-$TRUFFLERUBY_VERSION/truffleruby-$TRUFFLERUBY_VERSION-linux-$ARCH.tar.gz ;    tar -xzf truffleruby-$TRUFFLERUBY_VERSION-linux-$ARCH.tar.gz -C /usr/local --strip-components=1 ;\
+    rm truffleruby-$TRUFFLERUBY_VERSION-linux-$ARCH.tar.gz ;\
     /usr/local/lib/truffle/post_install_hook.sh ;\
     ruby --version ;\
     gem --version ;\

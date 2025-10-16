@@ -27,6 +27,7 @@ jobs:
           file: tool/dockerfiles/stable.dockerfile
           build-args: |
             TRUFFLERUBY_VERSION=${{github.event.inputs.version}}
+            ARCH=${{ matrix.platform == 'arm64' && 'aarch64' || 'amd64' }}
           platforms: linux/${{ matrix.platform }}
           tags: |
             ghcr.io/${{github.repository}}:stable
@@ -51,6 +52,7 @@ jobs:
           file: tool/dockerfiles/stable-slim.dockerfile
           build-args: |
             TRUFFLERUBY_VERSION=${{github.event.inputs.version}}
+            ARCH=${{ matrix.platform == 'arm64' && 'aarch64' || 'amd64' }}
           platforms: linux/${{ matrix.platform }}
           tags: |
             ghcr.io/${{github.repository}}:stable-slim
